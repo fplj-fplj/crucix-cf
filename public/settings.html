@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUCIX - Settings</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/settings.css">
+</head>
+<body>
+  <nav class="settings-nav">
+    <div class="nav-left">
+      <span class="nav-brand">CRUCIX</span>
+      <span class="nav-separator">|</span>
+      <span class="nav-title" data-i18n="settings.title">Settings</span>
+    </div>
+    <div class="nav-right">
+      <div id="unsaved-indicator" class="unsaved-indicator hidden" data-i18n="settings.unsavedChanges">Unsaved Changes</div>
+      <a href="/" class="nav-btn" data-i18n="settings.backToDashboard">Back to Dashboard</a>
+      <button id="lang-toggle" class="nav-btn lang-btn">EN</button>
+    </div>
+  </nav>
+
+  <main class="settings-main">
+    <section class="settings-panel">
+      <h2 class="panel-title" data-i18n="settings.apiKeys">API Keys</h2>
+      <div class="form-grid">
+        <div class="form-group">
+          <label data-i18n="settings.fredApiKey">FRED API Key</label>
+          <div class="input-wrapper">
+            <input type="text" id="fredApiKey" name="fredApiKey" data-i18n-placeholder="settings.enterApiKey" placeholder="Enter API Key">
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-i18n="settings.firmsMapKey">NASA FIRMS Map Key</label>
+          <div class="input-wrapper">
+            <input type="text" id="firmsMapKey" name="firmsMapKey" data-i18n-placeholder="settings.enterApiKey" placeholder="Enter API Key">
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-i18n="settings.eiaApiKey">EIA API Key</label>
+          <div class="input-wrapper">
+            <input type="text" id="eiaApiKey" name="eiaApiKey" data-i18n-placeholder="settings.enterApiKey" placeholder="Enter API Key">
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-i18n="settings.acledEmail">ACLED Email</label>
+          <div class="input-wrapper">
+            <input type="text" id="acledEmail" name="acledEmail" data-i18n-placeholder="settings.acledEmail" placeholder="ACLED Email">
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-i18n="settings.acledPassword">ACLED Password</label>
+          <div class="input-wrapper">
+            <input type="password" id="acledPassword" name="acledPassword" data-i18n-placeholder="settings.acledPassword" placeholder="ACLED Password">
+            <button type="button" class="toggle-visibility" data-target="acledPassword"><span data-i18n="settings.show">Show</span></button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-i18n="settings.aisStreamApiKey">AIS Stream API Key</label>
+          <div class="input-wrapper">
+            <input type="text" id="aisStreamApiKey" name="aisStreamApiKey" data-i18n-placeholder="settings.enterApiKey" placeholder="Enter API Key">
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-i18n="settings.adsbApiKey">ADS-B API Key</label>
+          <div class="input-wrapper">
+            <input type="text" id="adsbApiKey" name="adsbApiKey" data-i18n-placeholder="settings.enterApiKey" placeholder="Enter API Key">
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-i18n="settings.cloudflareApiToken">Cloudflare API Token</label>
+          <div class="input-wrapper">
+            <input type="text" id="cloudflareApiToken" name="cloudflareApiToken" data-i18n-placeholder="settings.enterApiKey" placeholder="Enter API Key">
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-i18n="settings.telegramBotToken">Telegram Bot Token</label>
+          <div class="input-wrapper">
+            <input type="password" id="telegramBotToken" name="telegramBotToken" data-i18n-placeholder="settings.enterApiKey" placeholder="Enter API Key">
+            <button type="button" class="toggle-visibility" data-target="telegramBotToken"><span data-i18n="settings.show">Show</span></button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-i18n="settings.telegramChatId">Telegram Chat ID</label>
+          <div class="input-wrapper">
+            <input type="text" id="telegramChatId" name="telegramChatId" data-i18n-placeholder="settings.telegramChatId" placeholder="Telegram Chat ID">
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-i18n="settings.discordBotToken">Discord Bot Token</label>
+          <div class="input-wrapper">
+            <input type="password" id="discordBotToken" name="discordBotToken" data-i18n-placeholder="settings.enterApiKey" placeholder="Enter API Key">
+            <button type="button" class="toggle-visibility" data-target="discordBotToken"><span data-i18n="settings.show">Show</span></button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-i18n="settings.discordChannelId">Discord Channel ID</label>
+          <div class="input-wrapper">
+            <input type="text" id="discordChannelId" name="discordChannelId" data-i18n-placeholder="settings.discordChannelId" placeholder="Discord Channel ID">
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-i18n="settings.discordGuildId">Discord Guild ID (optional)</label>
+          <div class="input-wrapper">
+            <input type="text" id="discordGuildId" name="discordGuildId" data-i18n-placeholder="settings.optional" placeholder="optional">
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-i18n="settings.discordWebhookUrl">Discord Webhook URL (optional)</label>
+          <div class="input-wrapper">
+            <input type="text" id="discordWebhookUrl" name="discordWebhookUrl" data-i18n-placeholder="settings.optional" placeholder="optional">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="settings-panel">
+      <h2 class="panel-title" data-i18n="settings.llmConfig">LLM Configuration</h2>
+      <div class="form-grid">
+        <div class="form-group">
+          <label data-i18n="settings.provider">Provider</label>
+          <select id="llmProvider" name="llmProvider">
+            <option value="none">None</option>
+            <option value="anthropic">Anthropic</option>
+            <option value="openai">OpenAI</option>
+            <option value="gemini">Gemini</option>
+            <option value="openrouter">OpenRouter</option>
+            <option value="minimax">MiniMax</option>
+            <option value="mistral">Mistral</option>
+            <option value="grok">Grok</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label data-i18n="settings.apiKey">API Key</label>
+          <div class="input-wrapper">
+            <input type="password" id="llmApiKey" name="llmApiKey" data-i18n-placeholder="settings.enterApiKey" placeholder="Enter API Key">
+            <button type="button" class="toggle-visibility" data-target="llmApiKey"><span data-i18n="settings.show">Show</span></button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-i18n="settings.model">Model</label>
+          <div class="model-select-area">
+            <select id="llmModel" name="llmModel">
+              <option value="" data-i18n="settings.defaultModel">Default Model</option>
+            </select>
+            <button type="button" id="fetchModelsBtn" class="action-btn" data-i18n="settings.fetchModels">Fetch Models</button>
+          </div>
+          <div id="modelsLoading" class="loading-indicator hidden" data-i18n="settings.fetchingModels">Fetching models...</div>
+        </div>
+        <div class="form-group">
+          <label data-i18n="settings.customModel">Custom Model</label>
+          <div class="input-wrapper">
+            <input type="text" id="llmCustomModel" name="llmCustomModel" data-i18n-placeholder="settings.enterCustomModel" placeholder="Enter custom model name">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="settings-panel">
+      <h2 class="panel-title" data-i18n="settings.translationConfig">Translation Configuration</h2>
+      <div class="form-grid">
+        <div class="form-group">
+          <label data-i18n="settings.translateNonChinese">Translate Non-Chinese Content</label>
+          <div class="toggle-wrapper">
+            <label class="toggle-switch">
+              <input type="checkbox" id="translateEnabled" name="translateEnabled">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-i18n="settings.translationProvider">Translation Provider</label>
+          <select id="translationProvider" name="translationProvider">
+            <option value="none">None</option>
+            <option value="google">Google (Free)</option>
+            <option value="microsoft">Microsoft (Free)</option>
+            <option value="deepl">DeepL (Free)</option>
+            <option value="deepl-pro">DeepL (API Key)</option>
+            <option value="mymemory">MyMemory (Free)</option>
+            <option value="libretranslate">LibreTranslate (Free)</option>
+          </select>
+        </div>
+        <div class="form-group" id="translationApiKeyGroup">
+          <label data-i18n="settings.translationApiKey">Translation API Key</label>
+          <div class="input-wrapper">
+            <input type="password" id="translationApiKey" name="translationApiKey" data-i18n-placeholder="settings.enterApiKey" placeholder="Enter API Key">
+            <button type="button" class="toggle-visibility" data-target="translationApiKey"><span data-i18n="settings.show">Show</span></button>
+          </div>
+        </div>
+        <div class="form-group" id="translationBaseUrlGroup">
+          <label data-i18n="settings.translationBaseUrl">LibreTranslate Base URL (optional)</label>
+          <div class="input-wrapper">
+            <input type="text" id="translationBaseUrl" name="translationBaseUrl" placeholder="https://libretranslate.de">
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-i18n="settings.translationTargetLang">Target Language</label>
+          <div class="input-wrapper">
+            <input type="text" id="translationTargetLang" name="translationTargetLang" value="zh">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="settings-panel">
+      <h2 class="panel-title" data-i18n="settings.botConfig">Bot Configuration</h2>
+      <div class="form-grid">
+        <div class="form-group">
+          <label data-i18n="settings.telegramStatus">Telegram Status</label>
+          <div class="bot-status-row">
+            <span id="telegramStatus" class="status-indicator disconnected" data-i18n="settings.disconnected">Disconnected</span>
+            <button type="button" id="registerTelegramBtn" class="action-btn" data-i18n="settings.registerWebhook">Register Webhook</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-i18n="settings.discordStatus">Discord Status</label>
+          <div class="bot-status-row">
+            <span id="discordStatus" class="status-indicator disconnected" data-i18n="settings.disconnected">Disconnected</span>
+            <button type="button" id="registerDiscordBtn" class="action-btn" data-i18n="settings.registerCommands">Register Commands</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="settings-panel">
+      <h2 class="panel-title" data-i18n="settings.sweepConfig">Sweep Configuration</h2>
+      <div class="form-grid">
+        <div class="form-group">
+          <label data-i18n="settings.refreshInterval">Refresh Interval (minutes)</label>
+          <div class="input-wrapper">
+            <input type="number" id="refreshInterval" name="refreshInterval" value="15" min="1" max="1440">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="save-bar">
+    <div id="save-toast" class="save-toast hidden" data-i18n="settings.saved">Saved</div>
+    <button type="button" id="saveBtn" class="save-btn" data-i18n="settings.save">Save</button>
+  </div>
+
+  <script type="module" src="/js/settings.mjs"></script>
+</body>
+</html>

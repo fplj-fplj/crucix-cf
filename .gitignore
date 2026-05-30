@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.vercel
+.turbo
+.env
+.env.local
+.env.*.local
+*.log
+.DS_Store
+Thumbs.db
+.vscode/settings.json
+.wrangler/
+tmp/
+coverage/
+.nyc_output/
+*.tgz

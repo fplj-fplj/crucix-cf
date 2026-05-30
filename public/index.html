@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUCIX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+
+  <div id="boot-overlay">
+    <div id="boot-content">
+      <div id="boot-logo">CRUCIX</div>
+      <div id="boot-text" data-i18n="boot.initializing">INITIALIZING CRUCIX INTELLIGENCE ENGINE</div>
+      <div id="boot-steps">
+        <div class="boot-step" data-step="1">
+          <span class="boot-step-icon">◈</span>
+          <span data-i18n="boot.loadingSources">Loading data sources</span>
+          <span class="boot-step-status">...</span>
+        </div>
+        <div class="boot-step" data-step="2">
+          <span class="boot-step-icon">◈</span>
+          <span data-i18n="boot.connecting">Establishing connections</span>
+          <span class="boot-step-status">...</span>
+        </div>
+        <div class="boot-step" data-step="3">
+          <span class="boot-step-icon">◈</span>
+          <span data-i18n="boot.sweepStarting">First sweep starting</span>
+          <span class="boot-step-status">...</span>
+        </div>
+      </div>
+      <div id="boot-progress-container">
+        <div id="boot-progress-bar"></div>
+      </div>
+      <div id="boot-percent">0%</div>
+    </div>
+  </div>
+
+  <div id="dashboard" class="hidden">
+
+    <header id="top-bar">
+      <div id="top-bar-left">
+        <h1 id="app-title" data-i18n="app.title">CRUCIX</h1>
+        <span id="app-subtitle" data-i18n="app.subtitle">CRUCIX MONITOR</span>
+      </div>
+      <nav id="region-filters">
+        <button class="region-btn active" data-region="world" data-i18n="nav.world">WORLD</button>
+        <button class="region-btn" data-region="americas" data-i18n="nav.americas">AMERICAS</button>
+        <button class="region-btn" data-region="europe" data-i18n="nav.europe">EUROPE</button>
+        <button class="region-btn" data-region="middleEast" data-i18n="nav.middleEast">MIDDLE EAST</button>
+        <button class="region-btn" data-region="asiaPacific" data-i18n="nav.asiaPacific">ASIA PACIFIC</button>
+        <button class="region-btn" data-region="africa" data-i18n="nav.africa">AFRICA</button>
+      </nav>
+      <div id="visuals-toggle">
+        <button id="visuals-full" class="visuals-btn active" data-i18n="visuals.full">VISUALS FULL</button>
+        <button id="visuals-lite" class="visuals-btn" data-i18n="visuals.lite">VISUALS LITE</button>
+      </div>
+      <div id="sweep-status">
+        <span class="sweep-label" data-i18n="app.sweep">SWEEP</span>
+        <span id="sweep-time">--:--:--</span>
+        <span id="sweep-date">----/--/--</span>
+        <span class="sweep-label" data-i18n="app.sources">SOURCES</span>
+        <span id="source-count">0</span>
+        <span class="sweep-label" data-i18n="app.delta">DELTA</span>
+        <span id="delta-status">--</span>
+      </div>
+      <div id="top-bar-right">
+        <button id="lang-toggle" data-i18n-aria="language.zh" aria-label="中文">中/EN</button>
+        <button id="settings-btn" aria-label="Settings">⚙</button>
+      </div>
+    </header>
+
+    <main id="main-grid">
+
+      <aside id="left-panel">
+        <section id="sensor-grid" class="panel">
+          <div class="panel-header">
+            <h2 class="panel-title" data-i18n="panels.sensorGrid.title">Sensor Grid</h2>
+            <span class="panel-badge live" data-i18n="panels.sensorGrid.live">LIVE</span>
+          </div>
+          <div class="panel-body">
+            <div class="sensor-card" data-sensor="airActivity">
+              <span class="sensor-icon">✈</span>
+              <span class="sensor-value">--</span>
+              <span class="sensor-label" data-i18n="panels.sensorGrid.airActivity">Air Activity</span>
+              <span class="sensor-sub"><span class="sensor-sub-value">--</span> <span data-i18n="panels.sensorGrid.theaters">theaters</span></span>
+            </div>
+            <div class="sensor-card" data-sensor="thermalSpikes">
+              <span class="sensor-icon">🔥</span>
+              <span class="sensor-value">--</span>
+              <span class="sensor-label" data-i18n="panels.sensorGrid.thermalSpikes">Thermal Spikes</span>
+              <span class="sensor-sub"><span class="sensor-sub-value">--</span> <span data-i18n="panels.sensorGrid.nightDet">night det.</span></span>
+            </div>
+            <div class="sensor-card" data-sensor="sdrCoverage">
+              <span class="sensor-icon">📡</span>
+              <span class="sensor-value">--</span>
+              <span class="sensor-label" data-i18n="panels.sensorGrid.sdrCoverage">SDR Coverage</span>
+              <span class="sensor-sub"><span class="sensor-sub-value">--</span> <span data-i18n="panels.sensorGrid.online">online</span></span>
+            </div>
+            <div class="sensor-card" data-sensor="maritimeWatch">
+              <span class="sensor-icon">🚢</span>
+              <span class="sensor-value">--</span>
+              <span class="sensor-label" data-i18n="panels.sensorGrid.maritimeWatch">Maritime Watch</span>
+              <span class="sensor-sub"><span class="sensor-sub-value">--</span> <span data-i18n="panels.sensorGrid.chokepoints">chokepoints</span></span>
+            </div>
+            <div class="sensor-card" data-sensor="nuclearSites">
+              <span class="sensor-icon">☢</span>
+              <span class="sensor-value">--</span>
+              <span class="sensor-label" data-i18n="panels.sensorGrid.nuclearSites">Nuclear Sites</span>
+              <span class="sensor-sub"><span class="sensor-sub-value">--</span> <span data-i18n="panels.sensorGrid.monitors">monitors</span></span>
+            </div>
+            <div class="sensor-card" data-sensor="conflictEvents">
+              <span class="sensor-icon">⚔</span>
+              <span class="sensor-value">--</span>
+              <span class="sensor-label" data-i18n="panels.sensorGrid.conflictEvents">Conflict Events</span>
+              <span class="sensor-sub"><span class="sensor-sub-value">--</span> <span data-i18n="panels.sensorGrid.fatalities">fatalities</span></span>
+            </div>
+            <div class="sensor-card" data-sensor="healthWatch">
+              <span class="sensor-icon">🦠</span>
+              <span class="sensor-value">--</span>
+              <span class="sensor-label" data-i18n="panels.sensorGrid.healthWatch">Health Watch</span>
+              <span class="sensor-sub"><span class="sensor-sub-value">--</span> <span data-i18n="panels.sensorGrid.whoAlerts">WHO alerts</span></span>
+            </div>
+            <div class="sensor-card" data-sensor="worldNews">
+              <span class="sensor-icon">📰</span>
+              <span class="sensor-value">--</span>
+              <span class="sensor-label" data-i18n="panels.sensorGrid.worldNews">World News</span>
+              <span class="sensor-sub"><span class="sensor-sub-value">--</span> <span data-i18n="panels.sensorGrid.rssGeolocated">RSS geolocated</span></span>
+            </div>
+            <div class="sensor-card" data-sensor="osintFeed">
+              <span class="sensor-icon">🔍</span>
+              <span class="sensor-value">--</span>
+              <span class="sensor-label" data-i18n="panels.sensorGrid.osintFeed">OSINT Feed</span>
+              <span class="sensor-sub"><span class="sensor-sub-value">--</span> <span data-i18n="panels.sensorGrid.urgent">urgent</span></span>
+            </div>
+            <div class="sensor-card" data-sensor="satellites">
+              <span class="sensor-icon">🛰</span>
+              <span class="sensor-value">--</span>
+              <span class="sensor-label" data-i18n="panels.sensorGrid.satellites">Satellites</span>
+              <span class="sensor-sub"><span class="sensor-sub-value">--</span> <span data-i18n="panels.sensorGrid.new30d">new (30d)</span></span>
+            </div>
+          </div>
+        </section>
+      </aside>
+
+      <section id="map-container" class="panel">
+        <div class="panel-header">
+          <h2 class="panel-title">GLOBE</h2>
+          <div id="map-toggle">
+            <button id="btn-globe" class="map-btn active">3D</button>
+            <button id="btn-flat" class="map-btn">2D</button>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div id="globe-view"></div>
+          <div id="leaflet-view" class="hidden"></div>
+        </div>
+      </section>
+
+      <aside id="right-panel">
+        <div id="right-panel-top">
+
+          <section id="nuclear-watch" class="panel">
+            <div class="panel-header">
+              <h2 class="panel-title" data-i18n="panels.nuclearWatch.title">Nuclear Watch</h2>
+              <span class="panel-badge urgent" data-i18n="panels.nuclearWatch.anomalyDetected">ANOMALY DETECTED</span>
+            </div>
+            <div class="panel-body">
+              <div class="nuclear-readings">
+                <div class="nuclear-reading">
+                  <span class="nuclear-label" data-i18n="panels.nuclearWatch.radiation">RADIATION</span>
+                  <span class="nuclear-value">--</span>
+                  <span class="nuclear-unit" data-i18n="panels.nuclearWatch.cpm">CPM</span>
+                </div>
+              </div>
+              <div id="nuclear-map" class="nuclear-heatmap"></div>
+            </div>
+          </section>
+
+          <section id="risk-gauges" class="panel">
+            <div class="panel-header">
+              <h2 class="panel-title" data-i18n="panels.riskGauges.title">Risk Gauges</h2>
+              <span class="panel-badge live" data-i18n="panels.sensorGrid.live">LIVE</span>
+            </div>
+            <div class="panel-body">
+              <div class="gauges-grid">
+                <div class="gauge" data-gauge="vix">
+                  <div class="gauge-ring"><div class="gauge-fill"></div></div>
+                  <div class="gauge-center">
+                    <span class="gauge-value">--</span>
+                    <span class="gauge-label" data-i18n="panels.riskGauges.vix">VIX (Fear)</span>
+                  </div>
+                </div>
+                <div class="gauge" data-gauge="hySpread">
+                  <div class="gauge-ring"><div class="gauge-fill"></div></div>
+                  <div class="gauge-center">
+                    <span class="gauge-value">--</span>
+                    <span class="gauge-label" data-i18n="panels.riskGauges.hySpread">HY Spread</span>
+                  </div>
+                </div>
+                <div class="gauge" data-gauge="usdIndex">
+                  <div class="gauge-ring"><div class="gauge-fill"></div></div>
+                  <div class="gauge-center">
+                    <span class="gauge-value">--</span>
+                    <span class="gauge-label" data-i18n="panels.riskGauges.usdIndex">USD Index</span>
+                  </div>
+                </div>
+                <div class="gauge" data-gauge="gscpi">
+                  <div class="gauge-ring"><div class="gauge-fill"></div></div>
+                  <div class="gauge-center">
+                    <span class="gauge-value">--</span>
+                    <span class="gauge-label" data-i18n="panels.riskGauges.gscpi">GSCPI</span>
+                  </div>
+                </div>
+              </div>
+              <div class="risk-indicators">
+                <div class="risk-indicator">
+                  <span class="risk-label" data-i18n="panels.riskGauges.joblessClaims">Jobless Claims</span>
+                  <span class="risk-value">--</span>
+                </div>
+                <div class="risk-indicator">
+                  <span class="risk-label" data-i18n="panels.riskGauges.mortgage30y">30Y Mortgage</span>
+                  <span class="risk-value">--</span>
+                </div>
+                <div class="risk-indicator">
+                  <span class="risk-label" data-i18n="panels.riskGauges.m2Supply">M2 Supply</span>
+                  <span class="risk-value">--</span>
+                </div>
+                <div class="risk-indicator">
+                  <span class="risk-label" data-i18n="panels.riskGauges.natDebt">Nat. Debt</span>
+                  <span class="risk-value">--</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="space-watch" class="panel">
+            <div class="panel-header">
+              <h2 class="panel-title" data-i18n="panels.spaceWatch.title">Space Watch</h2>
+              <span class="panel-badge" data-variant="purple" data-i18n="panels.spaceWatch.celesttrak">CELESTRAK</span>
+            </div>
+            <div class="panel-body">
+              <div class="space-stats">
+                <div class="space-stat">
+                  <span class="space-stat-value">--</span>
+                  <span class="space-stat-label" data-i18n="panels.spaceWatch.newObjects30d">New Objects (30d)</span>
+                </div>
+                <div class="space-stat">
+                  <span class="space-stat-value">--</span>
+                  <span class="space-stat-label" data-i18n="panels.spaceWatch.militarySats">Military Sats</span>
+                </div>
+              </div>
+              <div class="space-constellations">
+                <div class="space-constellation">
+                  <span class="constellation-name">Starlink</span>
+                  <span class="constellation-value">--</span>
+                  <span class="constellation-label" data-i18n="panels.spaceWatch.activeSatellites">active satellites</span>
+                </div>
+                <div class="space-constellation">
+                  <span class="constellation-name">OneWeb</span>
+                  <span class="constellation-value">--</span>
+                  <span class="constellation-label" data-i18n="panels.spaceWatch.activeSatellites">active satellites</span>
+                </div>
+              </div>
+              <div class="space-alerts">
+                <div class="space-alert">
+                  <span class="space-alert-badge" data-i18n="panels.spaceWatch.highLaunchTempo">HIGH LAUNCH TEMPO</span>
+                  <span class="space-alert-text" data-i18n="panels.spaceWatch.newObjectsTracked">new objects tracked in last 30 days</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+        <div id="right-panel-bottom">
+
+          <section id="news-ticker" class="panel">
+            <div class="panel-header">
+              <h2 class="panel-title" data-i18n="panels.newsTicker.title">Live News Ticker</h2>
+              <span class="panel-badge live" data-i18n="panels.sensorGrid.live">LIVE</span>
+              <span class="ticker-count"><span id="news-count">0</span> <span data-i18n="panels.newsTicker.items">ITEMS</span></span>
+            </div>
+            <div class="panel-body">
+              <div class="ticker">
+                <div class="ticker-track" id="ticker-track">
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="osint-feed" class="panel">
+            <div class="panel-header">
+              <h2 class="panel-title" data-i18n="panels.osintFeed.title">OSINT Stream</h2>
+              <span class="panel-badge urgent" data-i18n="panels.osintFeed.urgent">URGENT</span>
+            </div>
+            <div class="panel-body">
+              <div id="osint-posts">
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </aside>
+
+    </main>
+
+    <footer id="bottom-bar">
+
+      <section id="markets" class="panel">
+        <div class="panel-header">
+          <h2 class="panel-title" data-i18n="panels.markets.title">Macro + Markets</h2>
+          <span class="panel-badge live" data-i18n="panels.markets.live">LIVE</span>
+        </div>
+        <div class="panel-body">
+          <div class="market-categories">
+            <div class="market-category" data-category="indexes">
+              <h3 class="market-category-title" data-i18n="panels.markets.indexes">INDEXES</h3>
+              <div class="market-table">
+                <div class="market-row">
+                  <span class="market-name">S&P 500</span>
+                  <span class="market-value">--</span>
+                  <span class="market-change">--</span>
+                </div>
+                <div class="market-row">
+                  <span class="market-name">NASDAQ</span>
+                  <span class="market-value">--</span>
+                  <span class="market-change">--</span>
+                </div>
+                <div class="market-row">
+                  <span class="market-name">DOW</span>
+                  <span class="market-value">--</span>
+                  <span class="market-change">--</span>
+                </div>
+                <div class="market-row">
+                  <span class="market-name">NIKKEI</span>
+                  <span class="market-value">--</span>
+                  <span class="market-change">--</span>
+                </div>
+              </div>
+            </div>
+            <div class="market-category" data-category="crypto">
+              <h3 class="market-category-title" data-i18n="panels.markets.crypto">CRYPTO</h3>
+              <div class="market-table">
+                <div class="market-row">
+                  <span class="market-name">BTC</span>
+                  <span class="market-value">--</span>
+                  <span class="market-change">--</span>
+                </div>
+                <div class="market-row">
+                  <span class="market-name">ETH</span>
+                  <span class="market-value">--</span>
+                  <span class="market-change">--</span>
+                </div>
+              </div>
+            </div>
+            <div class="market-category" data-category="energy">
+              <h3 class="market-category-title" data-i18n="panels.markets.energyMetalsMacro">ENERGY + METALS + MACRO</h3>
+              <div class="market-table">
+                <div class="market-row">
+                  <span class="market-name">WTI</span>
+                  <span class="market-value">--</span>
+                  <span class="market-change">--</span>
+                </div>
+                <div class="market-row">
+                  <span class="market-name">GOLD</span>
+                  <span class="market-value">--</span>
+                  <span class="market-change">--</span>
+                </div>
+                <div class="market-row">
+                  <span class="market-name">DXY</span>
+                  <span class="market-value">--</span>
+                  <span class="market-change">--</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="trade-ideas" class="panel">
+        <div class="panel-header">
+          <h2 class="panel-title" data-i18n="panels.tradeIdeas.title">Leverageable Ideas</h2>
+          <span class="panel-badge" data-variant="purple" data-i18n="panels.tradeIdeas.aiEnhanced">AI ENHANCED</span>
+        </div>
+        <div class="panel-body">
+          <div id="trade-ideas-list">
+          </div>
+          <div class="trade-disclaimer" data-i18n="panels.tradeIdeas.disclaimer">FOR INFORMATIONAL PURPOSES ONLY. This is not financial advice, a recommendation to buy or sell any security, or a solicitation of any kind.</div>
+        </div>
+      </section>
+
+      <div id="bottom-right-panels">
+        <section id="cross-signals" class="panel">
+          <div class="panel-header">
+            <h2 class="panel-title" data-i18n="panels.crossSignals.title">Cross-Source Signals</h2>
+            <span class="panel-badge" data-variant="blue" data-i18n="panels.crossSignals.worldview">WORLDVIEW</span>
+          </div>
+          <div class="panel-body">
+            <div id="cross-signals-list">
+            </div>
+          </div>
+        </section>
+
+        <section id="sweep-delta" class="panel">
+          <div class="panel-header">
+            <h2 class="panel-title" data-i18n="panels.sweepDelta.title">Sweep Delta</h2>
+          </div>
+          <div class="panel-body">
+            <div class="delta-summary">
+              <span class="delta-stat"><span class="delta-stat-value" id="delta-changes">0</span> <span data-i18n="panels.sweepDelta.changes">Changes</span></span>
+              <span class="delta-stat"><span class="delta-stat-value" id="delta-critical">0</span> <span data-i18n="panels.sweepDelta.critical">Critical</span></span>
+              <span class="delta-stat"><span class="delta-stat-value" id="delta-new">0</span> <span data-i18n="panels.sweepDelta.new">New</span></span>
+            </div>
+            <div id="delta-list">
+            </div>
+          </div>
+        </section>
+
+        <section id="signal-guide" class="panel">
+          <div class="panel-header">
+            <h2 class="panel-title" data-i18n="panels.signalGuide.title">Signal Guide</h2>
+          </div>
+          <div class="panel-body">
+            <div class="signal-guide-intro" data-i18n="panels.signalGuide.whatSignalsMean">What the signals actually mean</div>
+            <div id="signal-guide-list">
+            </div>
+          </div>
+        </section>
+      </div>
+
+    </footer>
+
+  </div>
+
+  <script src="https://unpkg.com/globe.gl/dist/globe.gl.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script type="module" src="/js/dashboard.mjs"></script>
+</body>
+</html>

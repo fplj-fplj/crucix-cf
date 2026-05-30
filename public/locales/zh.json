@@ -1,0 +1,212 @@
+{
+  "app": {
+    "title": "CRUCIX",
+    "subtitle": "CRUCIX 监控台",
+    "loading": "初始化中...",
+    "sweep": "扫描",
+    "sources": "数据源",
+    "delta": "增量"
+  },
+  "nav": {
+    "world": "全球",
+    "americas": "美洲",
+    "europe": "欧洲",
+    "middleEast": "中东",
+    "asiaPacific": "亚太",
+    "africa": "非洲"
+  },
+  "visuals": {
+    "full": "完整视觉",
+    "lite": "精简视觉"
+  },
+  "panels": {
+    "sensorGrid": {
+      "title": "传感器网格",
+      "live": "实时",
+      "airActivity": "航空活动",
+      "theaters": "战区",
+      "thermalSpikes": "热力异常",
+      "nightDet": "夜间检测",
+      "sdrCoverage": "SDR 覆盖",
+      "online": "在线",
+      "maritimeWatch": "海事监控",
+      "chokepoints": "咽喉要道",
+      "nuclearSites": "核设施",
+      "monitors": "监测站",
+      "conflictEvents": "冲突事件",
+      "fatalities": "死亡人数",
+      "healthWatch": "健康预警",
+      "whoAlerts": "WHO 警报",
+      "worldNews": "世界新闻",
+      "rssGeolocated": "RSS 地理定位",
+      "osintFeed": "OSINT 源",
+      "urgent": "紧急",
+      "satellites": "卫星",
+      "new30d": "新增 (30天)"
+    },
+    "nuclearWatch": {
+      "title": "核监控",
+      "radiation": "辐射",
+      "anomalyDetected": "检测到异常",
+      "noData": "无数据",
+      "cpm": "CPM"
+    },
+    "riskGauges": {
+      "title": "风险仪表",
+      "stress": "压力",
+      "vix": "VIX (恐慌指数)",
+      "hySpread": "高收益利差",
+      "usdIndex": "美元指数",
+      "joblessClaims": "失业申请",
+      "mortgage30y": "30年房贷",
+      "m2Supply": "M2 货币供应",
+      "natDebt": "国债",
+      "gscpi": "供应链压力",
+      "elevated": "偏高"
+    },
+    "spaceWatch": {
+      "title": "太空监控",
+      "celesttrak": "CELESTRAK",
+      "newObjects30d": "新增物体 (30天)",
+      "militarySats": "军事卫星",
+      "starlink": "星链",
+      "oneweb": "OneWeb",
+      "iss": "国际空间站",
+      "unk": "未知",
+      "milSats": "军事卫星",
+      "highLaunchTempo": "高密度发射",
+      "newObjectsTracked": "近30天追踪到的新物体",
+      "starlinkMega": "星链巨型星座",
+      "activeSatellites": "颗活跃卫星"
+    },
+    "newsTicker": {
+      "title": "实时新闻",
+      "items": "条"
+    },
+    "osintFeed": {
+      "title": "OSINT 信息流",
+      "urgent": "紧急"
+    },
+    "markets": {
+      "title": "宏观与市场",
+      "live": "实时",
+      "indexes": "指数",
+      "crypto": "加密货币",
+      "energyMetalsMacro": "能源 + 金属 + 宏观",
+      "wti5day": "WTI 5日走势"
+    },
+    "tradeIdeas": {
+      "title": "可操作想法",
+      "aiEnhanced": "AI 增强",
+      "confidence": "置信度",
+      "risk": "风险",
+      "disclaimer": "仅供信息参考。本内容不构成金融建议、买卖证券的建议或任何形式的招揽。"
+    },
+    "crossSignals": {
+      "title": "跨源信号",
+      "worldview": "全球视图"
+    },
+    "sweepDelta": {
+      "title": "扫描增量",
+      "changes": "变化",
+      "critical": "严重",
+      "new": "新增",
+      "escalation": "↑",
+      "deescalation": "↓",
+      "mixed": "混合",
+      "escalated": "升级",
+      "deescalated": "降级",
+      "stable": "稳定"
+    },
+    "signalGuide": {
+      "title": "信号指南",
+      "whatSignalsMean": "信号含义解释",
+      "meaning": "含义",
+      "whyItMatters": "为何重要",
+      "notProofOf": "不能证明",
+      "example": "示例"
+    }
+  },
+  "alerts": {
+    "flash": "紧急",
+    "priority": "优先",
+    "routine": "常规",
+    "highAlert": "高级警报"
+  },
+  "settings": {
+    "title": "设置",
+    "apiKeys": "API 密钥",
+    "llmConfig": "LLM 配置",
+    "botConfig": "Bot 配置",
+    "sweepConfig": "扫描配置",
+    "translationConfig": "翻译配置",
+    "provider": "提供商",
+    "model": "模型",
+    "apiKey": "API 密钥",
+    "defaultModel": "默认模型",
+    "customModel": "自定义模型",
+    "fetchModels": "获取模型列表",
+    "save": "保存",
+    "saved": "已保存",
+    "registerWebhook": "注册 Webhook",
+    "registerCommands": "注册命令",
+    "webhookRegistered": "Webhook 已注册",
+    "webhookNotRegistered": "未注册",
+    "commandsRegistered": "命令已注册",
+    "commandsNotRegistered": "未注册",
+    "refreshInterval": "刷新间隔（分钟）",
+    "selectProvider": "选择提供商",
+    "enterApiKey": "输入 API 密钥",
+    "enterCustomModel": "输入自定义模型名称",
+    "noModelsFound": "未找到模型",
+    "fetchingModels": "正在获取模型...",
+    "backToDashboard": "返回仪表盘",
+    "unsavedChanges": "未保存更改",
+    "fredApiKey": "FRED API 密钥",
+    "firmsMapKey": "NASA FIRMS 地图密钥",
+    "eiaApiKey": "EIA API 密钥",
+    "acledEmail": "ACLED 邮箱",
+    "acledPassword": "ACLED 密码",
+    "aisStreamApiKey": "AIS Stream API 密钥",
+    "adsbApiKey": "ADS-B API 密钥",
+    "cloudflareApiToken": "Cloudflare API 令牌",
+    "telegramBotToken": "Telegram Bot Token",
+    "telegramChatId": "Telegram Chat ID",
+    "discordBotToken": "Discord Bot Token",
+    "discordChannelId": "Discord Channel ID",
+    "discordGuildId": "Discord Guild ID（可选）",
+    "discordWebhookUrl": "Discord Webhook URL（可选）",
+    "translateNonChinese": "翻译非中文内容",
+    "translationProvider": "翻译提供商",
+    "translationApiKey": "翻译 API 密钥",
+    "translationTargetLang": "目标语言",
+    "telegramStatus": "Telegram 状态",
+    "discordStatus": "Discord 状态",
+    "connected": "已连接",
+    "disconnected": "未连接",
+    "registering": "注册中...",
+    "show": "显示",
+    "hide": "隐藏",
+    "optional": "可选"
+  },
+  "errors": {
+    "fetchFailed": "数据获取失败",
+    "saveFailed": "保存失败",
+    "loadFailed": "加载失败",
+    "sweepFailed": "扫描失败",
+    "sweepInProgress": "扫描正在进行中",
+    "noData": "暂无数据",
+    "configRequired": "需要配置"
+  },
+  "boot": {
+    "initializing": "正在初始化 CRUCIX 情报引擎",
+    "loadingSources": "加载数据源",
+    "connecting": "建立连接",
+    "sweepStarting": "首次扫描启动中",
+    "ready": "系统就绪"
+  },
+  "language": {
+    "zh": "中文",
+    "en": "English"
+  }
+}

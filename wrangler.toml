@@ -1,0 +1,18 @@
+name = "crucix-cf"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+[[kv_namespaces]]
+binding = "BRIEFING_KV"
+id = "4d4a21bf54044cee9aca254c16e75089"
+
+[[kv_namespaces]]
+binding = "CONFIG_KV"
+id = "d2b9aafde36a4c57b69464c9e6fd32eb"
+
+[triggers]
+crons = ["*/15 * * * *"]
+
+[assets]
+directory = "public"

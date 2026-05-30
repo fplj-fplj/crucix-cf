@@ -1,0 +1,212 @@
+{
+  "app": {
+    "title": "CRUCIX",
+    "subtitle": "CRUCIX MONITOR",
+    "loading": "INITIALIZING...",
+    "sweep": "SWEEP",
+    "sources": "SOURCES",
+    "delta": "DELTA"
+  },
+  "nav": {
+    "world": "WORLD",
+    "americas": "AMERICAS",
+    "europe": "EUROPE",
+    "middleEast": "MIDDLE EAST",
+    "asiaPacific": "ASIA PACIFIC",
+    "africa": "AFRICA"
+  },
+  "visuals": {
+    "full": "VISUALS FULL",
+    "lite": "VISUALS LITE"
+  },
+  "panels": {
+    "sensorGrid": {
+      "title": "Sensor Grid",
+      "live": "LIVE",
+      "airActivity": "Air Activity",
+      "theaters": "theaters",
+      "thermalSpikes": "Thermal Spikes",
+      "nightDet": "night det.",
+      "sdrCoverage": "SDR Coverage",
+      "online": "online",
+      "maritimeWatch": "Maritime Watch",
+      "chokepoints": "chokepoints",
+      "nuclearSites": "Nuclear Sites",
+      "monitors": "monitors",
+      "conflictEvents": "Conflict Events",
+      "fatalities": "fatalities",
+      "healthWatch": "Health Watch",
+      "whoAlerts": "WHO alerts",
+      "worldNews": "World News",
+      "rssGeolocated": "RSS geolocated",
+      "osintFeed": "OSINT Feed",
+      "urgent": "urgent",
+      "satellites": "Satellites",
+      "new30d": "new (30d)"
+    },
+    "nuclearWatch": {
+      "title": "Nuclear Watch",
+      "radiation": "RADIATION",
+      "anomalyDetected": "ANOMALY DETECTED",
+      "noData": "No data",
+      "cpm": "CPM"
+    },
+    "riskGauges": {
+      "title": "Risk Gauges",
+      "stress": "STRESS",
+      "vix": "VIX (Fear)",
+      "hySpread": "HY Spread",
+      "usdIndex": "USD Index",
+      "joblessClaims": "Jobless Claims",
+      "mortgage30y": "30Y Mortgage",
+      "m2Supply": "M2 Supply",
+      "natDebt": "Nat. Debt",
+      "gscpi": "GSCPI",
+      "elevated": "elevated"
+    },
+    "spaceWatch": {
+      "title": "Space Watch",
+      "celesttrak": "CELESTRAK",
+      "newObjects30d": "New Objects (30d)",
+      "militarySats": "Military Sats",
+      "starlink": "Starlink",
+      "oneweb": "OneWeb",
+      "iss": "ISS",
+      "unk": "UNK",
+      "milSats": "mil sats",
+      "highLaunchTempo": "HIGH LAUNCH TEMPO",
+      "newObjectsTracked": "new objects tracked in last 30 days",
+      "starlinkMega": "STARLINK MEGA-CONSTELLATION",
+      "activeSatellites": "active satellites"
+    },
+    "newsTicker": {
+      "title": "Live News Ticker",
+      "items": "ITEMS"
+    },
+    "osintFeed": {
+      "title": "OSINT Stream",
+      "urgent": "URGENT"
+    },
+    "markets": {
+      "title": "Macro + Markets",
+      "live": "LIVE",
+      "indexes": "INDEXES",
+      "crypto": "CRYPTO",
+      "energyMetalsMacro": "ENERGY + METALS + MACRO",
+      "wti5day": "WTI 5-DAY"
+    },
+    "tradeIdeas": {
+      "title": "Leverageable Ideas",
+      "aiEnhanced": "AI ENHANCED",
+      "confidence": "confidence",
+      "risk": "Risk",
+      "disclaimer": "FOR INFORMATIONAL PURPOSES ONLY. This is not financial advice, a recommendation to buy or sell any security, or a solicitation of any kind."
+    },
+    "crossSignals": {
+      "title": "Cross-Source Signals",
+      "worldview": "WORLDVIEW"
+    },
+    "sweepDelta": {
+      "title": "Sweep Delta",
+      "changes": "Changes",
+      "critical": "Critical",
+      "new": "New",
+      "escalation": "↑",
+      "deescalation": "↓",
+      "mixed": "MIXED",
+      "escalated": "ESCALATED",
+      "deescalated": "DE-ESCALATED",
+      "stable": "STABLE"
+    },
+    "signalGuide": {
+      "title": "Signal Guide",
+      "whatSignalsMean": "What the signals actually mean",
+      "meaning": "Meaning",
+      "whyItMatters": "Why it matters",
+      "notProofOf": "Not proof of",
+      "example": "Example"
+    }
+  },
+  "alerts": {
+    "flash": "FLASH",
+    "priority": "PRIORITY",
+    "routine": "ROUTINE",
+    "highAlert": "HIGH ALERT"
+  },
+  "settings": {
+    "title": "Settings",
+    "apiKeys": "API Keys",
+    "llmConfig": "LLM Configuration",
+    "botConfig": "Bot Configuration",
+    "sweepConfig": "Sweep Configuration",
+    "translationConfig": "Translation Configuration",
+    "provider": "Provider",
+    "model": "Model",
+    "apiKey": "API Key",
+    "defaultModel": "Default Model",
+    "customModel": "Custom Model",
+    "fetchModels": "Fetch Models",
+    "save": "Save",
+    "saved": "Saved",
+    "registerWebhook": "Register Webhook",
+    "registerCommands": "Register Commands",
+    "webhookRegistered": "Webhook Registered",
+    "webhookNotRegistered": "Not Registered",
+    "commandsRegistered": "Commands Registered",
+    "commandsNotRegistered": "Not Registered",
+    "refreshInterval": "Refresh Interval (minutes)",
+    "selectProvider": "Select Provider",
+    "enterApiKey": "Enter API Key",
+    "enterCustomModel": "Enter custom model name",
+    "noModelsFound": "No models found",
+    "fetchingModels": "Fetching models...",
+    "backToDashboard": "Back to Dashboard",
+    "unsavedChanges": "Unsaved Changes",
+    "fredApiKey": "FRED API Key",
+    "firmsMapKey": "NASA FIRMS Map Key",
+    "eiaApiKey": "EIA API Key",
+    "acledEmail": "ACLED Email",
+    "acledPassword": "ACLED Password",
+    "aisStreamApiKey": "AIS Stream API Key",
+    "adsbApiKey": "ADS-B API Key",
+    "cloudflareApiToken": "Cloudflare API Token",
+    "telegramBotToken": "Telegram Bot Token",
+    "telegramChatId": "Telegram Chat ID",
+    "discordBotToken": "Discord Bot Token",
+    "discordChannelId": "Discord Channel ID",
+    "discordGuildId": "Discord Guild ID (optional)",
+    "discordWebhookUrl": "Discord Webhook URL (optional)",
+    "translateNonChinese": "Translate Non-Chinese Content",
+    "translationProvider": "Translation Provider",
+    "translationApiKey": "Translation API Key",
+    "translationTargetLang": "Target Language",
+    "telegramStatus": "Telegram Status",
+    "discordStatus": "Discord Status",
+    "connected": "Connected",
+    "disconnected": "Disconnected",
+    "registering": "Registering...",
+    "show": "Show",
+    "hide": "Hide",
+    "optional": "optional"
+  },
+  "errors": {
+    "fetchFailed": "Failed to fetch data",
+    "saveFailed": "Failed to save",
+    "loadFailed": "Failed to load",
+    "sweepFailed": "Sweep failed",
+    "sweepInProgress": "Sweep already in progress",
+    "noData": "No data available",
+    "configRequired": "Configuration required"
+  },
+  "boot": {
+    "initializing": "INITIALIZING CRUCIX INTELLIGENCE ENGINE",
+    "loadingSources": "Loading data sources",
+    "connecting": "Establishing connections",
+    "sweepStarting": "First sweep starting",
+    "ready": "SYSTEM READY"
+  },
+  "language": {
+    "zh": "中文",
+    "en": "English"
+  }
+}
